@@ -20,7 +20,12 @@ const usersSchema = new Schema({
         type: Number,
         required: true,
         trim: true
-    }
+    },tipoDeUser: {
+        type: String,
+        required: true
+    },
+    updated: { type: Date, default: Date.now },
+
 });
 
 module.exports= model('Users',usersSchema)

@@ -9,6 +9,7 @@ import Navigation from './components/Navigation'
 import registrarUser from './components/registrarUser'
 import login from './components/login';
 import paginaPrincipal from './components/paginaPrincipal';
+import paginaParaGraficos from './components/paginaParaGraficos';
 
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
       <Route path="/" exact component={login}></Route>
       <Route path="/registro" exact component={registrarUser}></Route>
       <Route path="/paginaPrincipal" exact component={paginaPrincipal}></Route>
-
+      <Route path="/graficos" exact component={paginaParaGraficos}></Route>
       </div>
     </Router>
   );

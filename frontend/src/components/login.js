@@ -26,6 +26,9 @@ export default class login extends Component {
         const res = await axios.post('http://localhost:4000/', datosLogin);
         const resultado = res.data.resultadoLogin;
         if (resultado === 'true') {
+
+           
+            localStorage.setItem('correo',this.state.correo);
             window.location.href = '/paginaPrincipal';
         } else {
             await swal({

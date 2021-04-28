@@ -11,13 +11,15 @@ registoCtrl.registrarUser = async (req, res) => {
         userName: userName,
         correo: correo,
         password: password,
-        numberPhone: numberPhone
+        numberPhone: numberPhone,
+        tipoDeUser: "jugador"
     });
     const userAux = []
     const users = await UserModel.find({ correo: correo });
     
     if (!users.length) {      
         const resultado = await newUserModel.save();
+        
         res.json({resultadoRegisto:'true'});
         
     } else{
