@@ -22,15 +22,15 @@ loginCtrl.verificarUser = async (req, res) => {
             const payload = {
                 correo: users[0].correo,
             };
-
             const token = jwt.sign(payload, "llaveUltrasecreta", {
                 expiresIn: 1440
             });
-
             console.log(token);
+            console.log({ resultadoLogin: 'true', id: users[0]._id, tipoDeUser: users[0].tipoDeUser });
+            res.json({ resultadoLogin: 'true', id: users[0]._id, tipoDeUser: users[0].tipoDeUser });
 
-console.log({ resultadoLogin: 'true', id: users[0]._id ,tipoDeUser:users[0].tipoDeUser});
-            res.json({ resultadoLogin: 'true', id: users[0]._id ,tipoDeUser:users[0].tipoDeUser});
+            
+
         } else {
 
             res.json({ resultadoLogin: 'false' });

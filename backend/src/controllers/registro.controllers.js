@@ -12,7 +12,8 @@ registoCtrl.registrarUser = async (req, res) => {
         correo: correo,
         password: password,
         numberPhone: numberPhone,
-        tipoDeUser: "jugador"
+        tipoDeUser: "jugador",
+        estado: "desconectado"
     });
     const userAux = []
     const users = await UserModel.find({ correo: correo });

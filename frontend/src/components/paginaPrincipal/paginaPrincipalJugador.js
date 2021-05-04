@@ -4,8 +4,7 @@ export default class paginaPrincipal extends Component {
 
     componentDidMount(){
         const correo = localStorage.getItem('correo');
-               
-        console.log(correo,'pagina principa');
+                      
     }
     render() {
         return (

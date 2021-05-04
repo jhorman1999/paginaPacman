@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Prompt, Component } from 'react'
 
 import axios from 'axios'
 import swal from 'sweetalert';
@@ -9,6 +9,7 @@ export default class login extends Component {
         correo: '',
         password: ''
     }
+
 
     onInputChange = e => {
         this.setState({
@@ -25,11 +26,16 @@ export default class login extends Component {
 
         const res = await axios.post('http://localhost:4000/', datosLogin);
         const resultado = res.data.resultadoLogin;
+        console.log(res.data)
         if (resultado === 'true') {
 
-           
-            localStorage.setItem('correo',this.state.correo);
-            window.location.href = '/paginaPrincipal';
+            if (res.data.tipoDeUser === 'jugador') {
+                localStorage.setItem('correo', this.state.correo);
+                window.location.href = '/paginaPrincipalJugador';
+            } else if (res.data.tipoDeUser === 'admin') {
+                localStorage.setItem('correo', this.state.correo);
+                window.location.href = '/paginaPrincipalAdmin';
+            }
         } else {
             await swal({
                 title: "El correo o la contraseña son incorrectos",
@@ -41,9 +47,17 @@ export default class login extends Component {
         }
     }
 
-    render() {
+    render(
+
+    ) {
         return (
+
+
+
+
             <div>
+                
+
                 <div className="card card-body col-md-6 offset-md-3">
                     <h3>
                         Login

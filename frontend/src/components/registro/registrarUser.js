@@ -10,6 +10,7 @@ export default class registrarUser extends Component {
         correo: '',
         userName: '',
         password: '',
+        password2: '',
         numberPhone: 0
 
     }
@@ -26,30 +27,44 @@ export default class registrarUser extends Component {
             correo: this.state.correo,
             userName: this.state.userName,
             password: this.state.password,
+            password2: this.state.password2,
             numberPhone: this.state.numberPhone
         };
         
-        const res = await axios.post('http://localhost:4000/registro',datosRegistro);
-        const resultado  =  res.data.resultadoRegisto;
-        if(resultado==='true'){
-            await swal({
-                title: "Registro Exitoso",
-                text: "",
-                icon: "success",
-                timer:"3000"
-              });
-            window.location.href = '/';
+        if (this.state.password === this.state.password2) {
+            const res = await axios.post('http://localhost:4000/registro', datosRegistro);
+            const resultado = res.data.resultadoRegisto;
+
+            if (resultado === 'true') {
+                await swal({
+                    title: "Registro Exitoso",
+                    text: "",
+                    icon: "success",
+                    timer: "3000"
+                });
+                window.location.href = '/';
+            } else {
+                await swal({
+                    title: "El correo ya esta registrado",
+                    text: "Por favor, escribe otro correo",
+                    icon: "warning",
+                    timer: "3000"
+                });
+
+            }
+
         } else {
             await swal({
-                title: "El correo ya esta registrado",
-                text: "Por favor, escribe otro correo",
+                title: "Las contraseñas no coinciden",
+                text: "Por favor, verifica que las contraseñas esten bien verificadas",
                 icon: "warning",
-                timer:"3000"
-              });
-            
+                timer: "3000"
+            });
+
         }
-     
-        
+
+
+
     }
     render() {
         return (
@@ -71,6 +86,11 @@ export default class registrarUser extends Component {
                         <div className="form-group" >
                             <input type="password" placeholder="contraseña" required className="form-control"
                                 name="password" onChange={this.onInputChange} value={this.state.password} autoComplete="nope"
+                            />
+                        </div>
+                        <div className="form-group" >
+                            <input type="password" placeholder="repita la contraseña" required className="form-control"
+                                name="password2" onChange={this.onInputChange} value={this.state.password2} autoComplete="nope"
                             />
                         </div>
                         <div className="form-group" >

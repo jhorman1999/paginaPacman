@@ -6,10 +6,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 import Navigation from './components/Navigation'
-import registrarUser from './components/registrarUser'
-import login from './components/login';
-import paginaPrincipal from './components/paginaPrincipal';
-import paginaParaGraficos from './components/paginaParaGraficos';
+import registrarUser from './components/registro/registrarUser'
+import login from './components/login/login';
+import paginaPrincipalJugador from './components/paginaPrincipal/paginaPrincipalJugador';
+import graficosJugador from './components/paginaPrincipal/GraficosJugador';
+import paginaPrincipalAdmin from './components/paginaPrincipal/paginaPrincipalAdmin';
 
 
 function App() {
@@ -19,8 +20,9 @@ function App() {
       <div className="container p-4">
       <Route path="/" exact component={login}></Route>
       <Route path="/registro" exact component={registrarUser}></Route>
-      <Route path="/paginaPrincipal" exact component={paginaPrincipal}></Route>
-      <Route path="/graficos" exact component={paginaParaGraficos}></Route>
+      <Route path="/paginaPrincipalJugador" exact component={paginaPrincipalJugador}></Route>
+      <Route path="/paginaPrincipalAdmin" exact component={paginaPrincipalAdmin}></Route>
+      <Route path="/graficosJugador" exact component={graficosJugador}></Route>
       </div>
     </Router>
   );

@@ -25,7 +25,10 @@ const usersSchema = new Schema({
         required: true
     },
     updated: { type: Date, default: Date.now },
-
+    estado: {
+        type: String,
+        required: true
+    },
 });
 
 module.exports= model('Users',usersSchema)
