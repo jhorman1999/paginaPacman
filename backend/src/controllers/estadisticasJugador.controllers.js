@@ -11,6 +11,7 @@ estadisticasJugador.registrarEstadisticas = async (req, res) => {
         puntaje: puntaje,
         tiempoDeJuego: tiempoDeJuego,
         resultadoPartida: resultadoPartida,
+        
     });
 
     const resultado = await newEsadisticaJugador.save(); 
@@ -44,12 +45,16 @@ estadisticasJugador.datosParaGraficar = async (req, res) => {
     minutosJugados += parseInt(segundosJugados/60);
     
     segundosJugados = parseInt(segundosJugados%60);
+    //jugadores conectados
+    const jugadoresConectados = await UserModel.find({ estado: "conectado"  });
 
+    //enviar datos
     res.json({ totalPartidas:estadisticas.length,
         puntajeTotal: puntajeTotal,
         partidasGanadas: partidasGanadas,
         minutosJugados:minutosJugados,
-        segundosJugados:segundosJugados
+        segundosJugados:segundosJugados,
+        jugadoresConectados: jugadoresConectados.length
      });
 }
 

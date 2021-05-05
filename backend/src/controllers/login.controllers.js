@@ -36,7 +36,14 @@ loginCtrl.verificarUser = async (req, res) => {
             res.json({ resultadoLogin: 'false' });
         }
     }
-};
 
+   
+};
+loginCtrl.conectarDesconectarUser = async (req, res) => {
+    const { correo, estado } = req.body;
+    const users = await UserModel.findOneAndUpdate({ correo: correo },{estado:estado});
+    
+    res.json({ users });
+};
 
 module.exports = loginCtrl;

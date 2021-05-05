@@ -1,4 +1,4 @@
-import React, { Prompt, Component } from 'react'
+import React, {  Component } from 'react'
 
 import axios from 'axios'
 import swal from 'sweetalert';
@@ -28,6 +28,13 @@ export default class login extends Component {
         const resultado = res.data.resultadoLogin;
         console.log(res.data)
         if (resultado === 'true') {
+            // cambiar estado a conectado
+            const estado = {
+                correo: this.state.correo,
+                estado: "conectado",
+            };
+            const resEstado = await axios.patch('http://localhost:4000/', estado);
+
 
             if (res.data.tipoDeUser === 'jugador') {
                 localStorage.setItem('correo', this.state.correo);
@@ -51,9 +58,6 @@ export default class login extends Component {
 
     ) {
         return (
-
-
-
 
             <div>
                 

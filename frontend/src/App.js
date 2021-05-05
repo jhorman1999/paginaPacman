@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.css';
 
-import Navigation from './components/Navigation'
+import Navigation from './components/Navigation/Navigation'
 import registrarUser from './components/registro/registrarUser'
 import login from './components/login/login';
 import paginaPrincipalJugador from './components/paginaPrincipal/paginaPrincipalJugador';
