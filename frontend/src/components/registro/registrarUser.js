@@ -14,7 +14,20 @@ export default class registrarUser extends Component {
         numberPhone: 0
 
     }
+    constructor() {
+        super();
+        console.log(localStorage.getItem('correo'), "hollaaaaaaaaaaaaaa")
+        if (localStorage.getItem('correo') === null) {
 
+        } else {
+            if (localStorage.getItem('tipoDeUser') === 'admin') {
+                window.location.href = '/paginaPrincipalAdmin';
+            } else if (localStorage.getItem('tipoDeUser') === 'jugador'){
+                
+                window.location.href = '/paginaPrincipalJugador';
+            }
+        }
+    }
     onInputChange = e => {
         this.setState({
             [e.target.name]: e.target.value

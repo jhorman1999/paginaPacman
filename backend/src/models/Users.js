@@ -29,6 +29,11 @@ const usersSchema = new Schema({
         type: String,
         required: true
     },
+    puntajeTotal:{
+        type: Number,
+        required: true,
+        trim: true
+    }
 });
 
 module.exports= model('Users',usersSchema)

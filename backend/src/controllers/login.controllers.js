@@ -26,7 +26,7 @@ loginCtrl.verificarUser = async (req, res) => {
                 expiresIn: 1440
             });
             console.log(token);
-            console.log({ resultadoLogin: 'true', id: users[0]._id, tipoDeUser: users[0].tipoDeUser });
+            //console.log({ resultadoLogin: 'true', id: users[0]._id, tipoDeUser: users[0].tipoDeUser });
             res.json({ resultadoLogin: 'true', id: users[0]._id, tipoDeUser: users[0].tipoDeUser });
 
             

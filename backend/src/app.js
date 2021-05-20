@@ -16,5 +16,7 @@ app.use(express.json());
 app.all('/', require('./routes/login'))
 app.all('/registro',require('./routes/registro'));
 app.all('/estadisticasJugador',require('./routes/estadisticasJugador'));
+app.all('/estadisticasAdmin',require('./routes/estadisticasAdmin'));
+
 
 module.exports = app;

@@ -9,12 +9,12 @@ export default class paginaPrincipal extends Component {
     render() {
         return (
             <div>
-                <div class="card">
-                    <div class="card-header">
+                <div className="card">
+                    <div className="card-header">
                         
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title">aqui va el juego</h5>
+                    <div className="card-body">
+                        <h5 className="card-title">aqui va el juego</h5>
                         
                     </div>
                 </div>

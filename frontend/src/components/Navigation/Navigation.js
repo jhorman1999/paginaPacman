@@ -15,7 +15,9 @@ export default class Navigation extends Component {
 
                     <Link className="navbar-brand" to="/">
                         <i className="material-icons">
-                            pacman </i> multiplayer
+                            pacman                         
+                             </i> multiplayer
+                             
                     </Link>
 
                     <div className="collapse navbar-collapse" id="navbarNav">
@@ -31,30 +33,61 @@ export default class Navigation extends Component {
                 </div>
             )
         } else {
-            return (
-                <div className="container">
-
-                    <Link className="navbar-brand" to="/paginaPrincipalJugador">
-                        <i className="material-icons">
-                            pacman </i> multiplayer
-                    </Link>
-
-                    <div className="collapse navbar-collapse" id="navbarNav">
-                        <ul className="navbar-nav  ml-auto">
-
+            if (localStorage.getItem('tipoDeUser') === 'admin') {
+                return (
+                    <div className="container">
+    
+                        <Link className="navbar-brand" to="/paginaPrincipalAdmin">
+                            <i className="material-icons">
+                                pacman </i> multiplayer
+                        </Link>
+    
+                        <div className="collapse navbar-collapse" id="navbarNav">
+                            <ul className="navbar-nav  ml-auto">
                             <li className="nav-item active">
-                                <Link className="nav-link" to="/paginaPrincipalJugador" > Jugar</Link>
-                            </li>
-                            <li className="nav-item active">
-                                <Link className="nav-link" to="/graficosJugador" > Estadisticas</Link>
-                            </li>
-                            <li className="nav-item active">
-                                <Link className="nav-link" onClick={this.cerrarSesion} to="/" > cerrar sesion</Link>
-                            </li>
-                        </ul>
+                                    <Link className="nav-link" to="/paginaPrincipalAdmin" > Admin</Link>
+                                </li>
+                                <li className="nav-item active">
+                                    <Link className="nav-link" to="/paginaPrincipalJugador" > Jugar</Link>
+                                </li>
+                                <li className="nav-item active">
+                                    <Link className="nav-link" to="/graficosJugador" > Estadisticas</Link>
+                                </li>
+                                <li className="nav-item active">
+                                    <Link className="nav-link" onClick={this.cerrarSesion} to="/" > cerrar sesion</Link>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            )
+                )
+            } else if (localStorage.getItem('tipoDeUser') === 'jugador'){
+                
+                return (
+                    <div className="container">
+    
+                        <Link className="navbar-brand" to="/paginaPrincipalJugador">
+                            <i className="material-icons">
+                                pacman </i> multiplayer
+                        </Link>
+    
+                        <div className="collapse navbar-collapse" id="navbarNav">
+                            <ul className="navbar-nav  ml-auto">
+    
+                                <li className="nav-item active">
+                                    <Link className="nav-link" to="/paginaPrincipalJugador" > Jugar</Link>
+                                </li>
+                                <li className="nav-item active">
+                                    <Link className="nav-link" to="/graficosJugador" > Estadisticas</Link>
+                                </li>
+                                <li className="nav-item active">
+                                    <Link className="nav-link" onClick={this.cerrarSesion} to="/" > cerrar sesion</Link>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                )
+            }
+            
         }
     }
 

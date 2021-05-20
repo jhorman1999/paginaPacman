@@ -1,4 +1,4 @@
-import React, {  Component } from 'react'
+import React, { Component } from 'react'
 
 import axios from 'axios'
 import swal from 'sweetalert';
@@ -10,6 +10,20 @@ export default class login extends Component {
         password: ''
     }
 
+    constructor() {
+        super();
+        console.log(localStorage.getItem('correo'), "hollaaaaaaaaaaaaaa")
+        if (localStorage.getItem('correo') === null) {
+
+        } else {
+            if (localStorage.getItem('tipoDeUser') === 'admin') {
+                window.location.href = '/paginaPrincipalAdmin';
+            } else if (localStorage.getItem('tipoDeUser') === 'jugador'){
+                
+                window.location.href = '/paginaPrincipalJugador';
+            }
+        }
+    }
 
     onInputChange = e => {
         this.setState({
@@ -26,7 +40,7 @@ export default class login extends Component {
 
         const res = await axios.post('http://localhost:4000/', datosLogin);
         const resultado = res.data.resultadoLogin;
-        console.log(res.data)
+       
         if (resultado === 'true') {
             // cambiar estado a conectado
             const estado = {
@@ -35,12 +49,15 @@ export default class login extends Component {
             };
             const resEstado = await axios.patch('http://localhost:4000/', estado);
 
-
+            console.log(res.data.tipoDeUser)
             if (res.data.tipoDeUser === 'jugador') {
                 localStorage.setItem('correo', this.state.correo);
+                console.log(res.data)
+                localStorage.setItem('tipoDeUser', res.data.tipoDeUser);
                 window.location.href = '/paginaPrincipalJugador';
             } else if (res.data.tipoDeUser === 'admin') {
                 localStorage.setItem('correo', this.state.correo);
+                localStorage.setItem('tipoDeUser', res.data.tipoDeUser);
                 window.location.href = '/paginaPrincipalAdmin';
             }
         } else {
@@ -60,7 +77,7 @@ export default class login extends Component {
         return (
 
             <div>
-                
+
 
                 <div className="card card-body col-md-6 offset-md-3">
                     <h3>

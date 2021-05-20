@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import { Chart } from "react-google-charts";
 import axios from 'axios'
 
+
+
 export default class paginaParaGraficos extends Component {
 
     state = {}
@@ -17,10 +19,12 @@ export default class paginaParaGraficos extends Component {
             minutosJugados: 0,
             segundosJugados: 0,
             jugadoresConectados: 0,
+            tablaPuntajes: []
         }
-
         this.consultarDatos();
-
+        setInterval(() => {
+            this.consultarDatos();
+        }, 10000);
     }
     async consultarDatos() {
 
@@ -38,9 +42,10 @@ export default class paginaParaGraficos extends Component {
             partidasGanadas: res.data.partidasGanadas,
             minutosJugados: res.data.minutosJugados,
             segundosJugados: res.data.segundosJugados,
-            jugadoresConectados: res.data.jugadoresConectados
-
-        })
+            jugadoresConectados: res.data.jugadoresConectados,
+            tablaPuntajes: res.data.tablaPuntajes,
+        }
+        )
 
 
 
@@ -64,7 +69,7 @@ export default class paginaParaGraficos extends Component {
                         data={
                             [
                                 ['partidas', 'numero de patidas'],
-                                ['paridas ganadas', this.state.partidasGanadas],
+                                ['partidas ganadas', this.state.partidasGanadas],
                                 ['partidas perdidas', (this.state.totalPartidas - this.state.partidasGanadas)],
 
                             ]}
@@ -93,22 +98,85 @@ export default class paginaParaGraficos extends Component {
                 {this.state.jugadoresConectados}
             </h1>)
     }
+    puntajeTotalJugador() {
+        return (
+            <h1>
+                tu puntaje total es:
+                {this.state.puntajeTotal}
+            </h1>)
+
+    }
+
+    tiempoJugado() {
+
+        return (
+            <h1>
+                haz jugado {this.state.minutosJugados} minutos y {this.state.segundosJugados} segundos
+
+            </h1>)
+    }
+
+    tablaPuntajesMasAltos() {
+
+
+
+        if (this.state.tablaPuntajes.length > 0) {
+            return this.state.tablaPuntajes.map((item, key) =>
+
+                <tr key={key}>
+                    <th key={key}>{item.correo} </th>
+                    <th key={key + 10}> {item.puntajeTotal}</th>
+                </tr>
+            )
+        }
+
+        return null
+
+
+    }
+
+
+
+
     render() {
 
         const graficos = this.graficaPartidas();
         const totalPartidasAux = this.totalPartidasJugador();
         const jugadoresConectadosAux = this.jugadoresConectados();
+        const puntajeTotalJugadorAux = this.puntajeTotalJugador();
+        const tiempoJugadoAux = this.tiempoJugado();
+        const tablaPuntajesMasAltosAux = this.tablaPuntajesMasAltos();
         return (
             <div className="div">
                 <div className="card">
+
+                    {puntajeTotalJugadorAux}
+                    {tiempoJugadoAux}
                     {jugadoresConectadosAux}
                     {totalPartidasAux}
                     {graficos}
 
+                    <h1>
+                        Top 10 jugadores
+                    </h1>
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Correo</th>
+                                <th>Puntaje</th>
+                            </tr>
+                        </thead>
+
+
+                        <tbody>
+
+                            {tablaPuntajesMasAltosAux}
+                        </tbody>
+                    </table>
+
                 </div>
             </div>
-
-
 
         );
     }
