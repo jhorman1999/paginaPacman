@@ -31,7 +31,7 @@ estadisticasAdmin.datosParaGraficar = async (req, res) => {
     res.json(
         {
             jugadoresConectados: jugadoresConectados.length,
-            //los 10 puntajes mas altos
+            
             jugadoresRegistrados: jugadoresRegistrados,
         });
 }
