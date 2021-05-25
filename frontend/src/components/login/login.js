@@ -12,14 +12,21 @@ export default class login extends Component {
 
     constructor() {
         super();
-        console.log(localStorage.getItem('correo'), "hollaaaaaaaaaaaaaa")
+
+
+        if ("geolocation" in navigator) {
+            console.log("Available");
+        } else {
+            console.log("Not Available");
+        }
+        
         if (localStorage.getItem('correo') === null) {
 
         } else {
             if (localStorage.getItem('tipoDeUser') === 'admin') {
                 window.location.href = '/paginaPrincipalAdmin';
-            } else if (localStorage.getItem('tipoDeUser') === 'jugador'){
-                
+            } else if (localStorage.getItem('tipoDeUser') === 'jugador') {
+
                 window.location.href = '/paginaPrincipalJugador';
             }
         }
@@ -40,7 +47,7 @@ export default class login extends Component {
 
         const res = await axios.post('http://localhost:4000/', datosLogin);
         const resultado = res.data.resultadoLogin;
-       
+
         if (resultado === 'true') {
             // cambiar estado a conectado
             const estado = {

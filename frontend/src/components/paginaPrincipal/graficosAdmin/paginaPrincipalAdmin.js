@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component, setState } from 'react'
 import { Chart } from "react-google-charts";
 import axios from 'axios'
-
+import './paginaPrincipalAdmin.css';
 export default class paginaPrincipalAdmin extends Component {
 
 
@@ -39,10 +39,14 @@ export default class paginaPrincipalAdmin extends Component {
 
     jugadoresConectados() {
         return (
-            <h1>
-                Jugadores conectados:
-                {this.state.jugadoresConectados}
-            </h1>)
+            <div>
+                <h5 className='jugadoresConectados'>
+                    Jugadores conectados:
+                
+                </h5>
+                <h5 className='jugadoresConectadosDatos'>{this.state.jugadoresConectados}</h5>
+            </div>
+        )
     }
 
     graficaPartidas() {
@@ -56,12 +60,12 @@ export default class paginaPrincipalAdmin extends Component {
                 </div>)
         } else {
 
-            var datosAux=[['fecha', 'Cantidad'],]
-            var totalAux=0
+            var datosAux = [['fecha', 'Cantidad'],]
+            var totalAux = 0
             for (let index = 0; index < this.state.jugadoresRegistrados.length; index++) {
-               const fecha =this.state.jugadoresRegistrados[index]._id
-               totalAux= parseInt( this.state.jugadoresRegistrados[index].total)+totalAux 
-               datosAux.push([fecha,totalAux])
+                const fecha = this.state.jugadoresRegistrados[index]._id
+                totalAux = parseInt(this.state.jugadoresRegistrados[index].total) + totalAux
+                datosAux.push([fecha, totalAux])
             }
 
             return (
@@ -84,6 +88,9 @@ export default class paginaPrincipalAdmin extends Component {
             )
         }
     }
+    mapaMetodo() {
+
+    }
 
     render() {
         const jugadoresConectadosAux = this.jugadoresConectados();
@@ -91,11 +98,21 @@ export default class paginaPrincipalAdmin extends Component {
 
         return (
             <div className="div">
-                <div className="card">
 
+                <div className="card">
+                    <div className="card-header" >
+                        <h3 classclassName="card-title">Administrador</h3>
+                    </div>
+                    <div className="card">
+                    <br></br>
                     {jugadoresConectadosAux}
-                    <h1>Cantidad jugadores registrados a lo largo del tiempo</h1>
+                    </div>
+                    <br></br>
+                    <div align='center' className="cantidadUsuarios">
+                    <h5 >Cantidad jugadores registrados a lo largo del tiempo</h5>
                     {graficosCandidadUsuarios}
+                    </div>
+                    
                 </div>
             </div>
         )

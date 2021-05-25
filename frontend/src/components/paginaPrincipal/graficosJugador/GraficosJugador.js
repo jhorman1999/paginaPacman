@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { Chart } from "react-google-charts";
 import axios from 'axios'
-
+import './GraficosJugador.css'
 
 
 export default class paginaParaGraficos extends Component {
@@ -61,8 +61,8 @@ export default class paginaParaGraficos extends Component {
             return (
                 <div>
                     <Chart
-                        width={'500px'}
-                        height={'300px'}
+                        width={'1000'}
+                        height={'600'}
                         chartType="PieChart"
                         loader={<div>Loading Chart</div>}
 
@@ -86,34 +86,41 @@ export default class paginaParaGraficos extends Component {
     totalPartidasJugador() {
 
         return (
-            <h1>
-                Total de partidas jugadas es:
+
+            
+            <h5>
+                Tu total de partidas jugadas es:&nbsp; 
                 {this.state.totalPartidas}
-            </h1>)
+            </h5>)
     }
     jugadoresConectados() {
         return (
-            <h1>
-                Jugadores conectados:
-                {this.state.jugadoresConectados}
-            </h1>)
+
+            <div>
+                <h5 className='jugadoresConectados'>
+                    Jugadores conectados:&nbsp; 
+                
+                </h5>
+                <h5 className='jugadoresConectadosDatos'>{this.state.jugadoresConectados}</h5>
+            </div>
+            )
     }
     puntajeTotalJugador() {
         return (
-            <h1>
-                tu puntaje total es:
+            <h5>
+                Tu puntaje total es: &nbsp; 
                 {this.state.puntajeTotal}
-            </h1>)
+            </h5>)
 
     }
 
     tiempoJugado() {
 
         return (
-            <h1>
-                haz jugado {this.state.minutosJugados} minutos y {this.state.segundosJugados} segundos
+            <h5>
+                Haz jugado {this.state.minutosJugados} minutos y {this.state.segundosJugados} segundos
 
-            </h1>)
+            </h5>)
     }
 
     tablaPuntajesMasAltos() {
@@ -124,8 +131,9 @@ export default class paginaParaGraficos extends Component {
             return this.state.tablaPuntajes.map((item, key) =>
 
                 <tr key={key}>
-                    <th key={key}>{item.correo} </th>
-                    <th key={key + 10}> {item.puntajeTotal}</th>
+                    <th key={key + "key"}>{key + 1} </th>
+                    <th key={key + "correo"}>{item.correo} </th>
+                    <th key={key + "puntaje"}> {item.puntajeTotal}</th>
                 </tr>
             )
         }
@@ -149,32 +157,68 @@ export default class paginaParaGraficos extends Component {
         return (
             <div className="div">
                 <div className="card">
+                    <div className="card-header" >
+                        <h5 className="card-title">Tus estadisticas </h5>
+                    </div>
+                    <div className="row mx-auto">
 
-                    {puntajeTotalJugadorAux}
-                    {tiempoJugadoAux}
-                    {jugadoresConectadosAux}
-                    {totalPartidasAux}
-                    {graficos}
+                        <div className="col-sm-6">
+                        <br/>
+                            <div className="card">
+                                <div align='center' className="card-body">
+                                    <h2>
+                                        Partidas ganadas vs Partidas Perdidas
+                    </h2>
+                                    {graficos}
+                                </div>
+                            </div>
+                        </div>
 
-                    <h1>
-                        Top 10 jugadores
-                    </h1>
-                    <table>
+                        <div className="col-sm-6">
+                            <br/>
+                        <div className="card">
+                        <br/>
+                        {jugadoresConectadosAux}
+                        </div>
+                            <div className="card">
+                                <div className="card-body">
+                                    {puntajeTotalJugadorAux}
+                                    {tiempoJugadoAux}
+                                    
+                                    {totalPartidasAux}
+                                </div>
+                            </div>
+                        </div>
 
-                        <thead>
-                            <tr>
-                                <th>Correo</th>
-                                <th>Puntaje</th>
-                            </tr>
-                        </thead>
 
 
-                        <tbody>
+                    </div>
 
-                            {tablaPuntajesMasAltosAux}
-                        </tbody>
-                    </table>
 
+                    <br></br>
+                    <div align='center' className='top10Jugadores'>
+
+                        <h2>
+                            Top 10 jugadores
+                    </h2>
+                        <table className='tablaPuntajes'>
+
+                            <thead>
+                                <tr>
+                                    <th>posicion</th>
+                                    <th>Correo</th>
+                                    <th>Puntaje</th>
+                                </tr>
+                            </thead>
+
+
+                            <tbody>
+
+                                {tablaPuntajesMasAltosAux}
+                            </tbody>
+                        </table>
+                    </div>
+                    <br></br>
                 </div>
             </div>
 

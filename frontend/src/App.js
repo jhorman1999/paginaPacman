@@ -1,5 +1,5 @@
 
-
+import React, { Component } from 'react'
 import {BrowserRouter as Router,Route} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -8,9 +8,9 @@ import './App.css';
 import Navigation from './components/Navigation/Navigation'
 import registrarUser from './components/registro/registrarUser'
 import login from './components/login/login';
-import paginaPrincipalJugador from './components/paginaPrincipal/paginaPrincipalJugador';
-import graficosJugador from './components/paginaPrincipal/GraficosJugador';
-import paginaPrincipalAdmin from './components/paginaPrincipal/paginaPrincipalAdmin';
+import paginaPrincipalJugador from './components/paginaPrincipal/paginaPrincipalJugador/paginaPrincipalJugador';
+import graficosJugador from './components/paginaPrincipal/graficosJugador/GraficosJugador';
+import paginaPrincipalAdmin from './components/paginaPrincipal/graficosAdmin/paginaPrincipalAdmin';
 
 
 function App() {
