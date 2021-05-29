@@ -28,9 +28,7 @@ export default class paginaPrincipal extends Component {
 
                     </div>
                     <div className="card-body">
-                        
                         <iframe src="https://i.simmer.io/@DanielVp/pacmanmultiplayer" style={{width:"960px", height:"600px"}}></iframe>
-
                     </div>
                 </div>
 
