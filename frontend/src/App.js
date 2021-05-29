@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import {BrowserRouter as Router,Route} from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.css';
@@ -16,13 +16,13 @@ import paginaPrincipalAdmin from './components/paginaPrincipal/graficosAdmin/pag
 function App() {
   return (
     <Router>
-      <Navigation/>
+      <Navigation />
       <div className="container p-4">
-      <Route path="/" exact component={login}></Route>
-      <Route path="/registro" exact component={registrarUser}></Route>
-      <Route path="/paginaPrincipalJugador" exact component={paginaPrincipalJugador}></Route>
-      <Route path="/paginaPrincipalAdmin" exact component={paginaPrincipalAdmin}></Route>
-      <Route path="/graficosJugador" exact component={graficosJugador}></Route>
+        <Route path="/" exact component={login}></Route>
+        <Route path="/registro" exact component={registrarUser}></Route>
+        <Route path="/paginaPrincipalJugador" exact component={paginaPrincipalJugador}></Route>
+        <Route path="/paginaPrincipalAdmin" exact component={paginaPrincipalAdmin}></Route>
+        <Route path="/graficosJugador" exact component={graficosJugador}></Route>
       </div>
     </Router>
   );

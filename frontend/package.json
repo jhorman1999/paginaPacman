@@ -13,6 +13,7 @@
     "react-google-charts": "^3.0.15",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^1.1.5",
+    "react-unity-webgl": "^7.1.10",
     "sweetalert": "^2.1.2",
     "web-vitals": "^1.1.1"
   },
