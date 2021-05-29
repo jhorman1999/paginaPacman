@@ -34,7 +34,9 @@ export default class paginaParaGraficos extends Component {
             "correo": correo
         };
 
-        const res = await axios.get('http://localhost:4000/estadisticasJugador', { params: datosConsultarGraficas });
+        const res = await axios.get('https://serverpacmanoage.herokuapp.com/estadisticasJugador', { params: datosConsultarGraficas }).catch(function (error) {
+            console.log("ERROR: " + error);
+        });;
 
         this.setState({
             totalPartidas: res.data.totalPartidas,

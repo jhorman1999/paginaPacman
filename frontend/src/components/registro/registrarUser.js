@@ -45,7 +45,7 @@ export default class registrarUser extends Component {
         };
         
         if (this.state.password === this.state.password2) {
-            const res = await axios.post('http://localhost:4000/registro', datosRegistro);
+            const res = await axios.post('https://serverpacmanoage.herokuapp.com/registro', datosRegistro);
             const resultado = res.data.resultadoRegisto;
 
             if (resultado === 'true') {

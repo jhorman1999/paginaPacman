@@ -45,7 +45,7 @@ export default class login extends Component {
             password: this.state.password,
         };
 
-        const res = await axios.post('http://localhost:4000/', datosLogin);
+        const res = await axios.post('https://serverpacmanoage.herokuapp.com/', datosLogin);
         const resultado = res.data.resultadoLogin;
 
         if (resultado === 'true') {
@@ -54,7 +54,7 @@ export default class login extends Component {
                 correo: this.state.correo,
                 estado: "conectado",
             };
-            const resEstado = await axios.patch('http://localhost:4000/', estado);
+            const resEstado = await axios.patch('https://serverpacmanoage.herokuapp.com/', estado);
 
             console.log(res.data.tipoDeUser)
             if (res.data.tipoDeUser === 'jugador') {

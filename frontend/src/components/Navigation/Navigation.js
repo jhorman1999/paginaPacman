@@ -107,7 +107,7 @@ export default class Navigation extends Component {
                     correo: correo,
                     estado: "desconectado",
                 };
-                const res = await axios.patch('http://localhost:4000/', estadoUser);
+                const res = await axios.patch('https://serverpacmanoage.herokuapp.com/', estadoUser);
 
                 localStorage.clear();
                 window.location.href = '/';

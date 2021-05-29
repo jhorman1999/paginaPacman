@@ -1,16 +1,9 @@
 import React, { Component } from 'react'
-import Unity, { UnityContent, UnityContext } from "react-unity-webgl";
 
 export default class paginaPrincipal extends Component {
 
-    constructor(props, UnityContext) {
+    constructor(props) {
         super(props);
-        this.unityContext = new UnityContent({
-            loaderUrl: "Build/PacManWebGl.loader.js",
-            dataUrl: "Build/PacManWebGl.data",
-            frameworkUrl: "Build/PacManWebGl.framework.js",
-            codeUrl: "Build/PacManWebGl.wasm",
-        });
 
 
         this.render = this.render.bind(this);

@@ -28,7 +28,7 @@ export default class paginaPrincipalAdmin extends Component {
             "correo": correo
         };
 
-        const res = await axios.get('http://localhost:4000/estadisticasAdmin', { params: datosConsultarGraficas });
+        const res = await axios.get('https://serverpacmanoage.herokuapp.com/estadisticasAdmin', { params: datosConsultarGraficas });
 
         this.setState({
             jugadoresConectados: res.data.jugadoresConectados,
