@@ -15,10 +15,11 @@ app.use(express.json());
 
 //routes rutas
 
-app.all('/', require('./routes/login'))
-app.all('/registro',require('./routes/registro'));
-app.all('/estadisticasJugador',require('./routes/estadisticasJugador'));
-app.all('/estadisticasAdmin',require('./routes/estadisticasAdmin'));
+app.use('/', require('./routes/login'))
+app.use('/registro',require('./routes/registro'));
+app.use('/estadisticasJugador',require('./routes/estadisticasJugador'));
+app.use('/estadisticasAdmin',require('./routes/estadisticasAdmin'));
 
+app.use(express.static('../../public'));
 
 module.exports = app;

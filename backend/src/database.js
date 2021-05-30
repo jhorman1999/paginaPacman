@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const URI = process.env.MONGODB_URI
     ? process.env.MONGODB_URI
-    : 'mongodb://localhost/pacmanDB';
+    : 'mongodb+srv://jhorman:jhorman@cluster0.bc5i0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 
 console.log(URI);
 
